@@ -35,6 +35,10 @@ const userService = require('./services/user.service.server');
 userService(app);
 const eventService = require('./services/event.service.server');
 eventService(app);
+const movieService = require('./services/movie.service.server');
+movieService(app);
+const bookingService = require('./services/booking.service.server');
+bookingService(app);
 
 app.listen(process.env.PORT || 5500, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
