@@ -14,7 +14,6 @@ function findAllHosts() {
     return hostModel.find();
 }
 
-
 function findHostByUserId(userId) {
     console.log(userId);
     return hostModel.findOne({user: userId});

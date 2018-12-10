@@ -265,20 +265,20 @@ module.exports = function (app) {
         }
     }
 
-    function sendEmailToUser(emailAddress, username) {
-        const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        const msg = {
-            to: emailAddress,
-            from: 'JobSearchMadeEasy@enjoy.com',
-            //templateId: 'e1ac3968-cf00-4d86-8012-869ab6d97429'
-            subject: 'You are verified!!',
-            text: 'Hi '+username+',\n' +
-            'Welcome to Movie Buddies.\n' +
-            'You are now a verified host. Thanks for joining us. Enjoy the features of ' +
-            'our new application by logging in creating movie events and organize awesome movie parties',
-        };
-         return sgMail.send(msg);
-    }
+    // function sendEmailToUser(emailAddress, username) {
+    //     const sgMail = require('@sendgrid/mail');
+    //     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    //     const msg = {
+    //         to: emailAddress,
+    //         from: 'JobSearchMadeEasy@enjoy.com',
+    //         //templateId: 'e1ac3968-cf00-4d86-8012-869ab6d97429'
+    //         subject: 'You are verified!!',
+    //         text: 'Hi '+username+',\n' +
+    //         'Welcome to Movie Buddies.\n' +
+    //         'You are now a verified host. Thanks for joining us. Enjoy the features of ' +
+    //         'our new application by logging in creating movie events and organize awesome movie parties',
+    //     };
+    //      return sgMail.send(msg);
+    // }
 
 }
