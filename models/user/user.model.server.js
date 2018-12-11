@@ -29,7 +29,7 @@ function findPendingHosts() {
 }
 
 function findUserById(userId) {
-    return userModel.findOne(userId,{password:0});
+    return userModel.findById(userId);
 }
 
 function findHostById(userId) {

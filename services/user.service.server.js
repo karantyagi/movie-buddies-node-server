@@ -115,7 +115,7 @@ module.exports = function (app) {
             .then((u) => {
                 if (u != null) {
                     if ((u.role === 'Guest' || u.role === 'Admin')
-                        || (u.role === 'Host' && u.requestStatus != 'Pending')) {
+                        || (u.role === 'Host')) {
                         req.session['user'] = u;
                         res.json({status: 'success', role: u.role, user: u})
                     } else {
