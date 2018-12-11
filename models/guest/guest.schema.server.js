@@ -4,7 +4,8 @@ const guestSchema = mongoose.Schema({
     tickets: Number,
     booking: Number,
     status: String,  // blacklisted
-    user : {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}
+    user : {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
+    follows : [{type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}],
 }, {collection: 'Guest'});
 
 module.exports = guestSchema;

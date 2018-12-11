@@ -27,11 +27,36 @@ module.exports = function (app) {
     // users (guest, hosts)
     app.post('/api/login', login);
     app.post('/api/register', register);
+    // app.post('/api/profile', getProfile);
+    app.get('/api/profile', profile);
     app.get('/api/profile/guest', getGuestProfile);
     app.get('/api/profile/host', getHostProfile);
     app.post('/api/logout', logout);
     app.put('/api/profile', updateProfile);
     app.delete('/api/user', deleteProfile);
+
+    // // Get logged in user
+    // function getProfile(req, res) {
+    //     console.log('return session', res.status);
+    //     if (res.status == 'success') {
+    //         console.log('USER in SESSION', req.session['user']);
+    //         userModel.findUserById(req.session['user']._id).then((user) =>
+    //             res.json(user));
+    //     } else {
+    //         res.send(null);
+    //     }
+    // }
+
+    // check which user is in session
+    function profile(req, res) {
+        console.log(req.session);
+        if(req.session['user'] != null) {
+            res.send(req.session['user']);
+        } else { res.send(
+            { "username" : "No session maintained"
+            });}
+    }
+
 
     function createUser(req, res) {
         if (req.session && req.session['user'] && req.session['user'].role === 'Admin') {
@@ -92,13 +117,13 @@ module.exports = function (app) {
                     if ((u.role === 'Guest' || u.role === 'Admin')
                         || (u.role === 'Host' && u.requestStatus != 'Pending')) {
                         req.session['user'] = u;
-                        res.json({status: 'success', role: u.role})
+                        res.json({status: 'success', role: u.role, user: u})
                     } else {
-                        res.json({status: 'Host verification pending', role: null});
+                        res.json({status: 'Host verification pending', role: null, user: null});
                     }
 
                 } else {
-                    res.json({status: 'user does not exists', role: null});
+                    res.json({status: 'user does not exists', role: null, user: null });
                 }
 
             });

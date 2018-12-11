@@ -8,7 +8,6 @@ const userSchema = mongoose.Schema({
     role: String, // role : Admin, Guest , Host
     requestStatus: String, // 'status types : 'Pending' && 'Verified''
     premiumRequestStatus: String, // 'status types : 'Pending' && 'Verified'
-    guest: {type: mongoose.Schema.Types.ObjectId, ref:'GuestModel'},
-    host: {type: mongoose.Schema.Types.ObjectId, ref:'HostModel'}
+    follows : [{type: mongoose.Schema.Types.ObjectId, ref:'UserModel'}]
 }, {collection: 'User'});
 module.exports = userSchema;
