@@ -12,7 +12,7 @@ Repository for Final Project for CS5200-Database Management Systems course, taug
 
 - [User REST API](https://movie-buddies.herokuapp.com/api/user)
 
-- __[Live app](https://job-search-made-easy.herokuapp.com/home)__
+- __[Live app]()__
 - __Movie Buddies App Repo(frontend) :__ []()
 
 ## Documentation
