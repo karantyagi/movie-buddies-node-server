@@ -88,4 +88,17 @@ module.exports = function (app) {
         }
     }
     
+    function modifyBooking(req, res) {
+        var booking = req.body;
+        var bookingId = req.params['bookingId'];
+        if (req.session && req.session['user']) {
+            bookingModel.updateBooking(bookingId,booking)
+                .then(function (status) {
+                    res.send(status);
+                });
+        } else {
+            res.send({status: 'session expired'});
+        }
+    }
+    
 };
