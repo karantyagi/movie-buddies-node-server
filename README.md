@@ -1,7 +1,7 @@
 ## Database Management Project
 
 # `Movie Buddies nodejs server`
-Backend for Movie Buddies Application
+##Backend for Movie Buddies Application
 
 ## `Movie-Buddies`
 
