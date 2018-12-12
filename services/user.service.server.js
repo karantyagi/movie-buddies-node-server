@@ -115,7 +115,7 @@ module.exports = function (app) {
             .then((u) => {
                 if (u != null) {
                     if ((u.role === 'Guest' || u.role === 'Admin')
-                        || (u.role === 'Host')) {
+                        || (u.role === 'Host' && u.requestStatus != 'Pending')) {
                         req.session['user'] = u;
                         res.json({status: 'success', role: u.role, user: u})
                     } else {
@@ -138,18 +138,12 @@ module.exports = function (app) {
             if (u != null) {
                 res.json({status: false});
             } else {
+                if(user.role != 'Admin'){
+                    user.rating = '5';
+                }
                 userModel.createUser(user).then(function (user) {
-                    user.password = '';
-                    if (user.role != 'Host') {
-                        req.session['user'] = user;
-                        res.json({status: true});
-                    } else {
-                        hostModel.createHost({user: user._id}).then(() => {
-                                res.json({status: true});
-                            }
-                        )
-                    }
-
+                    req.session['user'] = user;
+                    res.json({status: true});
                 })
             }
         })

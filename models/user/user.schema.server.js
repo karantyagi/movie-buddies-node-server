@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     role: String, // role : Admin, Guest , Host
     requestStatus: String, // 'status types : 'Pending' && 'Verified''
     premiumRequestStatus: String, // 'status types : 'Pending' && 'Verified'
-    follows : [String]
+    follows : [String],
+    rating: String
 }, {collection: 'User'});
 module.exports = userSchema;

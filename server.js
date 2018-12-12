@@ -7,11 +7,17 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// require mongoose
-var connectionString = 'mongodb://127.0.0.1:27017/movie-buddies'; // for local
+// for local connection string
+var connectionString =   'mongodb://127.0.0.1:27017/movie-buddies';
 
+// check if running remotely
+if(process.env.MONGODB_URI) {
+    connectionString = process.env.MONGODB_URI;
+}
+
+// create connection to mongodb
 var mongoose = require('mongoose');
-mongoose.connect(connectionString).then();
+var global = mongoose.connect(connectionString,{useNewUrlParser : true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
