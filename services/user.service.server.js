@@ -11,8 +11,6 @@ module.exports = function (app) {
 
     const userModel =
         require('./../models/user/user.model.server');
-    const hostModel =
-        require('./../models/host/host.model.server');
 
     // admin access
     app.get('/api/user', findAllUsers);
@@ -33,6 +31,7 @@ module.exports = function (app) {
     app.get('/api/profile/host', getHostProfile);
     app.post('/api/logout', logout);
     app.put('/api/profile', updateProfile);
+    app.put('/api/user', updateUser);
     app.delete('/api/user', deleteProfile);
 
     // // Get logged in user
@@ -68,6 +67,10 @@ module.exports = function (app) {
                 } else {
                     userModel.createUser(user).then(function (user) {
                         console.log(user);
+                        if(user.role == 'Host' || user.role == 'Admin'){
+                            if(user.rating == null){
+                                user.rating = '5';}
+                        }
                         userModel.createUser(user)
                             .then(function () {
                                 res.send({status: true});
@@ -138,8 +141,9 @@ module.exports = function (app) {
             if (u != null) {
                 res.json({status: false});
             } else {
-                if(user.role != 'Admin'){
-                    user.rating = '5';
+                if(user.role == 'Host' || user.role == 'Host'){
+                    if(user.rating == null){
+                    user.rating = '5';}
                 }
                 userModel.createUser(user).then(function (user) {
                     req.session['user'] = user;
@@ -196,7 +200,16 @@ module.exports = function (app) {
         } else {
             res.send(null);
         }
+    }
 
+
+    function updateUser(req, res) {
+            let newUser = req.body;
+            console.log('  ---------------  000000000000000 -----------   ' ,newUser);
+            userModel.updateUser(newUser._id, newUser).then(
+                function (status) {
+                    res.send(status);
+                });
     }
 
     function logout(req, res) {

@@ -8,7 +8,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // for local connection string
-var connectionString =   'mongodb://127.0.0.1:27017/movie-buddies';
+// var connectionString =   'mongodb://127.0.0.1:27017/movie-buddies';
+
+/** TETSING */
+var connectionString = 'mongodb://heroku_93blhsw3:quc2o256d02d9lfk9l950jinv1@ds131814.mlab.com:31814/heroku_93blhsw3';
+
 
 // check if running remotely
 if(process.env.MONGODB_URI) {

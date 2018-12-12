@@ -63,8 +63,6 @@ function deleteUser(userId) {
 }
 
 function updateUser(userId, newUser) {
-    console.log(userId);
-    console.log(newUser);
     return userModel.update({_id: userId},
         {$set: newUser})
 }
