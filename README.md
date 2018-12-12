@@ -23,7 +23,7 @@ Northeastern University - Fall 2018. <br>
 
 ## Links
 * Live Web App hosted on Heroku : [Movie Buddies Web App](https://movie-buddies-client.herokuapp.com/home)
-* Angular client for Movie Buddies : [Node Backend Repository](https://github.com/karantyagi/movie-buddies-node-server)
+* Angular client for Movie Buddies : [Angular Client Repository](https://github.com/karantyagi/cs5200_fall2018_HKS)
 * REST API backend : [User REST API](https://movie-buddies.herokuapp.com/api/user)
 * [Youtube video demo]()
 
