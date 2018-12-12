@@ -16,6 +16,7 @@ if(process.env.MONGODB_URI) {
     connectionString = process.env.MONGODB_URI;
 }
 
+
 // create connection to mongodb
 var mongoose = require('mongoose');
 var global = mongoose.connect(connectionString,{useNewUrlParser : true});
